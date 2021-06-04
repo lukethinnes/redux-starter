@@ -6,32 +6,31 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 
-
-const store = createStore(reducer)
-
 const userReducer = (state={}, action) => {
   switch(action.type){
     default:
       return state
+    }
   }
-}
   
 const charactersReducer = (state = [], action) => {
   switch(action.type){
     case 'SET_CHARACTERS':
       return action.payload
-    case 'ADD_CHARACTER':
-      return [...state, action.payload]
-    default:
-      return state
-  }
-}
-      
+      case 'ADD_CHARACTER':
+        return [...state, action.payload]
+        default:
+          return state
+        }
+      }
+
 const reducer = combineReducers({
   user: userReducer,
   characters: charactersReducer
 })
 
+const store = createStore(reducer)
+        
 ReactDOM.render(
   <Provider store={store}>
     <App />
